@@ -1,0 +1,95 @@
+#%RAML 1.0 DataType
+properties:
+  id_contrato:
+    type: string
+    required: false
+    description: id do contrato
+    example: "762f035f-eb68-4ec7-808e-11f2410b424a"
+  celular:
+    type: string
+    required: false
+    description: Número do celular Vivo vinculado ao contrato
+    example: "11941372715"
+  token_assinatura:
+    type: string
+    required: false
+    description: token utilizado para validar assinatura
+    example: "189268"
+  link_ccb:
+    type: string
+    required: false
+    description: link para download da Cédula de Crédito Bancária assinada
+    example: "https://www.captalys.com/ccb/18927"
+  valor_pago:
+    type: number
+    required: false
+    description: valor total pago no contrato
+    example: 18240.00
+  valor_devido:
+    type: number
+    required: false
+    description: valor devido no contrato
+    example: 19273.00
+  valor_recebido_cliente:
+    type: number
+    required: false
+    description: valor recebido pelo cliente
+    example: 25000.00
+  cet:
+    type: number
+    required: false
+    description: custo efetivo total do contrato
+    example: 0.0299
+  data_vencimento:
+    type: datetime-only
+    required: false
+    description: data de vencimento do contrato
+    example: "2020-10-29T00:00:00"
+  data_emissao:
+    type: datetime-only
+    required: false
+    description: data de emissao do contrato
+    example: "2020-10-29T00:00:00"
+  valor_futuro:
+    type: number
+    required: false
+    description: valor futuro do do contrato
+    example: 32000.00
+  data_proximo_pagamento:
+    type: datetime-only
+    required: false
+    description: data do próximo pagamento a ser feito
+    example: "2020-10-29T00:00:00"
+  numero_parcelas_abertas:
+    type: integer
+    required: false
+    description: numero de parcelas em aberto
+    example: 12
+  status:
+    type: string
+    enum: [
+          	"ABERTO",
+          	"FECHADO",
+          	"DOC_APROVADO",
+          	"DOC_RECUSADO",
+            "KYC",
+            "MIDIA_NEGATIVA",
+            "BANCO_INVALIDO"
+          ]
+    required: false
+    description: status do contrato
+  taxa_juros_mensal:
+    type: number
+    required: false
+    description: taxa de juros mensal contratada
+    example: 0.0299
+  taxa_juros_anual:
+    type: number
+    required: false
+    description: taxa de juros anual contratada
+    example: 42.90
+  parcelas:
+    type: array
+    items: !include parcela.raml
+    required: false
+    description: array de parcelas do contrato

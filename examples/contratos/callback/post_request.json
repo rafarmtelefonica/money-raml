@@ -1,0 +1,7 @@
+{
+  "ecid": "{{ecid}}",
+	"operation_id": "{{operation_id}}",
+	"status": "success",
+	"id_message": "1007",
+	"message": "Documentos invalidos."
+}

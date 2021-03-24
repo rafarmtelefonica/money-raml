@@ -1,0 +1,35 @@
+#%RAML 1.0 DataType
+properties:
+  ecid:
+    type: string
+    required: true
+    description: ecid do contrato a ser atualizado
+    example: "1892937971002937871927018038718729"
+  operation_id:
+    type: string
+    required: true
+    description: operation_id do contrato a ser atualizado
+    example: "762f035f-eb68-4ec7-808e-11f2410b424a"
+  status:
+    type: string
+    enum: ["error", "success"]
+    required: true
+    description: status do callback
+                 error -> houve alguma inconsistencia na avaliação da mesa
+                 success -> callback de sucesso da etapa
+  id_message:
+    type: string
+    enum: ["1001", "1003", "1004", "1005", "1006", "1007"]
+    required: true
+    description: id para identificar o tipo do callback
+                 1001 - KYC Invalido
+                 1003 - Midias negativas
+                 1004 - Documentos inválidos
+                 1005 - Dados bancários inválidos
+                 1006 - Desembolso confirmado
+                 1007 - Análise documental aprovada
+  message:
+    type: string
+    required: true
+    description: Descrição do retorno do parceiro
+    example: "Documento ilegivel"

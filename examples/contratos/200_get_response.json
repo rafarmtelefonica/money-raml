@@ -1,0 +1,33 @@
+{
+	"celular": "11941372715",
+	"link_ccb": "www.com",
+	"valor_pago": 18000.00,
+	"valor_devido": 6100,
+	"valor_recebido": 23000.00,
+	"cet": 0.0199,
+	"data_vencimento": "2022-03-02T00:00:00",
+	"data_emissao": "2020-10-28 00:00:00",
+	"valor_futuro": 28909.09,
+	"data_proximo_pagamento": "2021-05-27T00:00:00",
+	"numero_parcelas_abertas": 10,
+	"status": "ABERTO",
+	"taxa_juros_mensal": 0.0299,
+	"taxa_juros_anual": 42.907,
+	"parcelas": [{
+		"valor_pago": 1977.41,
+		"valor_devido": 0.0,
+		"boleto": {
+			"linha_digitavel": "189nn99189289",
+			"link_download": "www.com"
+		},
+		"data_vencimento": "2020-12-28T00:00:00",
+		"valor_emissao": 1866.88,
+		"valor_nominal": 1977.41,
+		"pagamentos": [{
+			"valor_pago": 1977.41,
+			"data": "2020-10-29T00:00:00"
+		}],
+		"numero_parcela": 1,
+		"status": "FECHADA"
+	}]
+}

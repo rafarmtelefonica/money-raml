@@ -1,0 +1,36 @@
+#%RAML 1.0 DataType
+properties:
+  id_formalizacao:
+    type: string
+    required: false
+    example: "762f035f-eb68-4ec7-808e-11f2410b424a"
+  metodo:
+    type: string
+    enum: ["SMS", "EMAIL"]
+    required: false
+    description: define o metodo da formalizacao
+  tipo:
+    type: string
+    enum: ["LOGIN", "ASSINATURA"]
+    required: false
+    description: define o tipo da formalizacao
+  telefone:
+    type: string
+    required: false
+    description: telefone do cliente vinculado a formalizacao
+    example: "11941372715"
+  token_formalizacao:
+    type: string
+    required: false
+    description: token utilizado para formalização
+    example: "878675"
+  public_ip:
+    type: string
+    required: false
+    description: IP publico utilizado para identificador o cliente
+    example: "192.0.0.1"
+  data_formalizacao:
+    type: datetime-only
+    required: false
+    description: data em que foi realizada a formalizacao
+    example: "2020-09-02T12:41:22:198"

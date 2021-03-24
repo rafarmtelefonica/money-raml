@@ -1,0 +1,46 @@
+#%RAML 1.0 DataType
+properties:
+  valor_pago:
+    type: number
+    required: false
+    description: valor total pago da parcela
+    example: 4000.00
+  valor_devido:
+    type: number
+    required: false
+    description: valor devido da parcela
+    example: 2398.00
+  boleto:
+    type: !include boleto.raml
+    required: false
+    description: informações do boleto para pagamento da parcela
+  data_vencimento:
+    type: datetime-only
+    required: false
+    description: data de vencimento da parcela
+    example: "2020-10-29T00:00:00"
+  valor_emissao:
+    type: number
+    required: false
+    description: valor de emissao da parcela
+    example: 1890.00
+  valor_nominal:
+    type: number
+    required: false
+    description: valor nominal da parcela
+    example: 1980.00
+  pagamentos:
+    type: array
+    items: !include pagamento.raml
+    required: false
+    description: pagamentos realizados para a parcela
+  numero_parcela:
+    type: integer
+    required: false
+    description: numero da parcela
+    example: 3
+  status:
+    type: string
+    enum: ["ABERTA", "FECHADA"]
+    required: false
+    description: status da parcela

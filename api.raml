@@ -1,0 +1,100 @@
+#%RAML 1.0
+title: Vivo Money
+version: v1
+baseUri: https://vivomoney.com.br/api/{version}
+
+traits:
+  auth: !include traits/authenticated.raml
+
+types:
+  contrato: !include schemas/contratos/contrato.raml
+  callback: !include schemas/contratos/callback/callback.raml
+  formalizacao: !include schemas/formalizacoes/formalizacao.raml
+
+/formalizacoes:
+  description: API responsável por efetuar operações de formalização
+  displayName: API Formalizacoes
+  post:
+    is: [auth]
+    description: Cria uma nova formalização baseada no metodo informado
+    body:
+      application/json:
+        type: formalizacao
+        examples:
+          login: !include examples/formalizacoes/login_post_request.json
+          assinatura: !include examples/formalizacoes/assinatura_post_request.json
+    responses:
+      201:
+        body:
+          application/json:
+            type: formalizacao
+            example: !include examples/formalizacoes/201_post_response.json
+  /{id_formalizacao}:
+    patch:
+      description: valida o token de formalizacao
+      body:
+        application/json:
+          type: formalizacao
+          example: !include examples/formalizacoes/valida_token_patch_request.json
+      responses:
+        200:
+          body:
+            application/json:
+              type: formalizacao
+              example: !include examples/formalizacoes/200_patch_response.json
+        403:
+          body:
+            application/json:
+              example: {"message": "token expirado"}
+    /token:
+        get:
+          description: envia um novo token de formalizacao
+          responses:
+            200:
+              body:
+                application/json:
+                  example: {"message": "token reenviado"}
+
+/contratos:
+  description: API responsável por efetuar operações em contratos
+  displayName: API Contratos
+  post:
+    description: Valida a assinatura da proposta e gera um contrato
+    body:
+      application/json:
+        type: contrato
+        example: !include examples/contratos/post_request.json
+    responses:
+      201:
+        body:
+          application/json:
+            type: contrato
+            example: !include examples/contratos/201_post_response.json
+  /{id_contrato}:
+    get:
+      description: Obtém os dados do contrato.
+      queryParameters:
+        celular:
+          type: string
+          required: true
+          description: Celular vinculado ao contrato
+      responses:
+        200:
+          body:
+            application/json:
+              type: contrato
+              example: !include examples/contratos/200_get_response.json
+  /callback:
+    description: Rota para realização de callback de atualização do contrato
+    post:
+      description: Valida a assinatura da proposta e gera um contrato
+      body:
+        application/json:
+          type: callback
+          example: !include examples/contratos/callback/post_request.json
+      responses:
+        201:
+          body:
+            application/json:
+              type: contrato
+              example: !include examples/contratos/callback/201_post_response.json
